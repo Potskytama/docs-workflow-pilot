@@ -57,7 +57,8 @@ The generated structure covers five areas of brand knowledge.
 | **Content Guidelines** | Channel Guide, Content Standards, Style Guide | Channel guidance, content standards, style, and terminology |
 | **Customer Evidence** | Case Studies, Evidence Framework, Success Metrics, Testimonials | Evidence that can support brand claims |
 
-These areas help AI understand who the brand serves, what it offers, how it communicates, and what supports its claims. For details about the generated folders, the files they contain, and how each type of information can be used, see [Brand context folders and files](brand-context-folders-and-files.md).
+These areas help AI understand who the brand serves, what it offers, how it communicates, and what supports its claims. 
+For details about the generated folders, the files they contain, and how each type of information can be used, see [Brand context folders and files](brand-context-folders-and-files.md).
 
 ## Editing brand context
 

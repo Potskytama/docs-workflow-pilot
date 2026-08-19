@@ -1,0 +1,2128 @@
+[
+  {
+    "url": "",
+    "text": "WELCOME"
+  },
+  {
+    "url": "sitecoreai",
+    "text": "SitecoreAI",
+    "children": [
+      {
+        "url": "navigating-the-interface",
+        "text": "Navigating the interface"
+      },
+      {
+        "url": "finding-xm-cloud-tools-in-sitecoreai",
+        "text": "Finding XM Cloud tools in SitecoreAI"
+      },
+      {
+        "url": "sitecore-studio-overview",
+        "text": "Sitecore studio overview"
+      }
+    ]
+  },
+  {
+    "url": "",
+    "text": "AUDIENCES &amp; INSIGHTS"
+  },
+  {
+    "url": "audience-and-insights",
+    "text": "Audience and insights",
+    "children": [
+      {
+        "url": "identity-resolution",
+        "text": "Identity resolution",
+        "children": [
+          {
+            "url": "identity-rules",
+            "text": "Identity rules"
+          },
+          {
+            "url": "manage-identity-rules",
+            "text": "Manage identity rules"
+          }
+        ]
+      },
+      {
+        "url": "affinities",
+        "text": "Affinities",
+        "children": [
+          {
+            "url": "set-up-affinities-for-a-site",
+            "text": "Set up affinities for a site"
+          },
+          {
+            "url": "personalize-a-page-using-affinities",
+            "text": "Personalize a page using affinities"
+          }
+        ]
+      },
+      {
+        "url": "profiles",
+        "text": "Profiles",
+        "children": [
+          {
+            "url": "view-filter-and-search-profiles",
+            "text": "View, filter, and search profiles"
+          },
+          {
+            "url": "view-profile-details",
+            "text": "View profile details"
+          }
+        ]
+      },
+      {
+        "url": "audiences",
+        "text": "Audiences",
+        "children": [
+          {
+            "url": "get-started-with-audiences",
+            "text": "Get started with audiences"
+          },
+          {
+            "url": "audience-builder",
+            "text": "Audience builder"
+          },
+          {
+            "url": "create-an-audience",
+            "text": "Create an audience"
+          },
+          {
+            "url": "edit-delete-or-reorder-audience-rules",
+            "text": "Edit, delete, or reorder audience rules"
+          },
+          {
+            "url": "view-and-inspect-audience-details",
+            "text": "View and inspect audience details"
+          },
+          {
+            "url": "calculate-the-estimated-audience-size",
+            "text": "Calculate the estimated audience size"
+          },
+          {
+            "url": "set-an-audience-refresh-schedule",
+            "text": "Set an audience refresh schedule"
+          },
+          {
+            "url": "set-an-audience-live",
+            "text": "Set an audience live"
+          },
+          {
+            "url": "view-audience-membership",
+            "text": "View audience membership"
+          },
+          {
+            "url": "pause-an-audience",
+            "text": "Pause an audience"
+          },
+          {
+            "url": "available-attributes-for-audience-rules",
+            "text": "Available attributes for audience rules"
+          },
+          {
+            "url": "audience-rule-comparators",
+            "text": "Audience rule comparators"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "",
+    "text": "CAMPAIGNS"
+  },
+  {
+    "url": "plan-campaign-strategy",
+    "text": "Plan campaign strategy",
+    "children": [
+      {
+        "url": "strategy-overview",
+        "text": "Overview"
+      },
+      {
+        "url": "using-the-brand-assistant",
+        "text": "Assistant",
+        "children": [
+          {
+            "url": "configure-brand-assistant-information-sources",
+            "text": "Configure sources"
+          },
+          {
+            "url": "configure-brand-assistant-writing-style",
+            "text": "Configure writing style"
+          },
+          {
+            "url": "use-the-brand-assistant-for-brand-aware-chats",
+            "text": "Brand-aware chats"
+          },
+          {
+            "url": "generate-long-form-content-using-brainstorming",
+            "text": "Brainstorming"
+          },
+          {
+            "url": "generate-a-campaign-brief",
+            "text": "Brief generation"
+          },
+          {
+            "url": "brand-assistant-chat-examples",
+            "text": "Brand Assistant chat examples"
+          },
+          {
+            "url": "how-the-brand-assistant-works",
+            "text": "How the Brand Assistant works"
+          }
+        ]
+      },
+      {
+        "url": "managing-briefs",
+        "text": "Briefs",
+        "children": [
+          {
+            "url": "brief-types",
+            "text": "Brief types",
+            "children": [
+              {
+                "url": "create-a-brief-type",
+                "text": "Create a brief type"
+              },
+              {
+                "url": "manage-brief-type-fields",
+                "text": "Manage brief type fields"
+              },
+              {
+                "url": "duplicate-a-brief-type",
+                "text": "Duplicate a brief type"
+              },
+              {
+                "url": "edit-a-brief-type",
+                "text": "Edit a brief type"
+              },
+              {
+                "url": "delete-a-brief-type",
+                "text": "Delete a brief type"
+              },
+              {
+                "url": "formatting-rich-text-fields",
+                "text": "Formatting rich text fields"
+              }
+            ]
+          },
+          {
+            "url": "create-a-smart-brief",
+            "text": "Create a smart brief"
+          },
+          {
+            "url": "create-and-assign-a-to-do-task",
+            "text": "Create and assign a to-do task"
+          },
+          {
+            "url": "add-comments-to-a-brief",
+            "text": "Add comments to a brief"
+          },
+          {
+            "url": "link-a-brief-to-a-campaign",
+            "text": "Link a brief to a campaign"
+          },
+          {
+            "url": "unlink-a-brief-from-a-campaign",
+            "text": "Unlink a brief from a campaign"
+          },
+          {
+            "url": "convert-a-brief-into-a-campaign",
+            "text": "Convert a brief into a campaign"
+          },
+          {
+            "url": "edit-a-brief",
+            "text": "Edit a brief"
+          },
+          {
+            "url": "delete-a-brief",
+            "text": "Delete a brief"
+          },
+          {
+            "url": "generate-brief-content-using-ai",
+            "text": "Generate brief content using AI"
+          }
+        ]
+      },
+      {
+        "url": "managing-campaigns",
+        "text": "Campaigns",
+        "children": [
+          {
+            "url": "create-a-campaign",
+            "text": "Create a campaign"
+          },
+          {
+            "url": "add-a-deliverable-to-a-campaign",
+            "text": "Add a deliverable to a campaign"
+          },
+          {
+            "url": "add-a-task-to-a-deliverable",
+            "text": "Add a task to a deliverable"
+          },
+          {
+            "url": "campaign-calendar",
+            "text": "Campaign calendar"
+          },
+          {
+            "url": "manage-campaign-access",
+            "text": "Manage campaign access"
+          },
+          {
+            "url": "understanding-workflow-entities",
+            "text": "Understanding workflow entities"
+          },
+          {
+            "url": "manage-a-campaign-deliverable-or-task",
+            "text": "Manage a campaign, deliverable, or task"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "",
+    "text": "DESIGNS"
+  },
+  {
+    "url": "design-components",
+    "text": "Design components",
+    "children": [
+      {
+        "url": "design-studio",
+        "text": "Design studio",
+        "children": [
+          {
+            "url": "key-benefits-of-the-design-studio",
+            "text": "Key benefits of the Design studio"
+          },
+          {
+            "url": "find-a-component-in-the-design-studio",
+            "text": "Find a component in the Design studio"
+          },
+          {
+            "url": "visualize-components-in-the-design-studio",
+            "text": "Visualize components in the Design studio",
+            "children": [
+              {
+                "url": "understanding-visualization-values-and-data-sources",
+                "text": "Understanding visualization values and data sources"
+              }
+            ]
+          },
+          {
+            "url": "experiment-with-components-in-inspect-mode",
+            "text": "Experiment with components in Inspect mode"
+          },
+          {
+            "url": "view-and-edit-the-code-from-a-component",
+            "text": "View and edit the code from a component"
+          },
+          {
+            "url": "generate-variants-of-a-component-with-ai",
+            "text": "Generate variants of a component with AI"
+          },
+          {
+            "url": "save-a-variant",
+            "text": "Save a variant"
+          }
+        ]
+      },
+      {
+        "url": "components",
+        "text": "Components",
+        "children": [
+          {
+            "url": "understanding-components",
+            "text": "Understanding components"
+          },
+          {
+            "url": "get-started-with-the-component-builder",
+            "text": "Get started with the Component builder",
+            "children": [
+              {
+                "url": "components-key-concepts-and-terms",
+                "text": "Components key concepts and terms"
+              },
+              {
+                "url": "shared-libraries",
+                "text": "Shared libraries"
+              }
+            ]
+          },
+          {
+            "url": "prototyping-components",
+            "text": "Prototyping components",
+            "children": [
+              {
+                "url": "work-with-components",
+                "text": "Work with components"
+              },
+              {
+                "url": "work-with-component-versions",
+                "text": "Work with component versions"
+              },
+              {
+                "url": "work-with-responsive-bundles",
+                "text": "Work with responsive bundles",
+                "children": [
+                  {
+                    "url": "work-with-breakpoints",
+                    "text": "Work with breakpoints"
+                  }
+                ]
+              },
+              {
+                "url": "work-with-a-component-layout",
+                "text": "Work with a component layout"
+              },
+              {
+                "url": "add-and-configure-grids",
+                "text": "Add and configure grids"
+              },
+              {
+                "url": "use-elements-to-build-components",
+                "text": "Use elements to build components"
+              },
+              {
+                "url": "hide-and-conceal-an-element",
+                "text": "Hide and conceal an element"
+              },
+              {
+                "url": "preview-and-inspect-components",
+                "text": "Preview and inspect components"
+              },
+              {
+                "url": "configuring-an-element",
+                "text": "Configuring an element"
+              }
+            ]
+          },
+          {
+            "url": "wrapping-code-in-a-component",
+            "text": "Wrapping code in a component",
+            "children": [
+              {
+                "url": "add-html-and-javascript-to-a-component",
+                "text": "Add HTML and JavaScript to a component"
+              },
+              {
+                "url": "wrap-a-web-component-in-a-sitecore-component",
+                "text": "Wrap a web component in a Sitecore component"
+              },
+              {
+                "url": "add-an-external-component-to-the-component-builder",
+                "text": "Add an external component to the Component builder"
+              }
+            ]
+          },
+          {
+            "url": "adding-dynamic-content-to-a-component",
+            "text": "Adding dynamic content to a component",
+            "children": [
+              {
+                "url": "get-your-content-from-an-xm-data-source",
+                "text": "Get your content from an XM data source"
+              },
+              {
+                "url": "map-data-from-an-xm-data-source-to-a-component",
+                "text": "Map data from an XM data source to a component"
+              },
+              {
+                "url": "get-your-content-from-external-data-sources",
+                "text": "Get your content from external data sources"
+              },
+              {
+                "url": "map-data-from-an-external-source-to-a-component",
+                "text": "Map data from an external source to a component"
+              },
+              {
+                "url": "set-a-repeater-for-an-array",
+                "text": "Set a repeater for an array"
+              },
+              {
+                "url": "manage-dynamic-content",
+                "text": "Manage dynamic content"
+              }
+            ]
+          },
+          {
+            "url": "creating-your-styles-library",
+            "text": "Creating your styles library",
+            "children": [
+              {
+                "url": "define-style-basics",
+                "text": "Define style basics"
+              },
+              {
+                "url": "build-style-rules",
+                "text": "Build style rules"
+              },
+              {
+                "url": "apply-rules-to-elements",
+                "text": "Apply rules to elements"
+              },
+              {
+                "url": "compose-a-theme",
+                "text": "Compose a theme"
+              },
+              {
+                "url": "add-custom-fonts-and-styles",
+                "text": "Add custom fonts and styles"
+              }
+            ]
+          },
+          {
+            "url": "styling-components",
+            "text": "Styling components",
+            "children": [
+              {
+                "url": "style-a-component-with-a-theme",
+                "text": "Style a component with a theme"
+              },
+              {
+                "url": "style-a-single-element-and-text",
+                "text": "Style a single element and text"
+              },
+              {
+                "url": "customize-an-element",
+                "text": "Customize an element"
+              },
+              {
+                "url": "stage-and-publish-styles",
+                "text": "Stage and publish styles"
+              }
+            ]
+          },
+          {
+            "url": "using-components-in-a-webpage",
+            "text": "Using components in a webpage",
+            "children": [
+              {
+                "url": "staging-and-publishing-components",
+                "text": "Staging and publishing components"
+              },
+              {
+                "url": "stage-and-publish-a-component",
+                "text": "Stage and publish a component"
+              },
+              {
+                "url": "get-the-embedding-code-of-a-component",
+                "text": "Get the embedding code of a component"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "url": "search-experiences",
+        "text": "Search experiences",
+        "children": [
+          {
+            "url": "examples-of-search-experiences",
+            "text": "Examples of search experiences"
+          },
+          {
+            "url": "get-started-with-search-experiences",
+            "text": "Get started with search experiences"
+          },
+          {
+            "url": "understanding-search-sources",
+            "text": "Understanding search sources",
+            "children": [
+              {
+                "url": "fields",
+                "text": "Fields"
+              },
+              {
+                "url": "rules",
+                "text": "Rules"
+              },
+              {
+                "url": "advanced-settings",
+                "text": "Advanced settings"
+              }
+            ]
+          },
+          {
+            "url": "manage-content-sources",
+            "text": "Manage content sources"
+          },
+          {
+            "url": "manage-site-sources",
+            "text": "Manage site sources",
+            "children": [
+              {
+                "url": "sitecore-ip-allowlist",
+                "text": "Sitecore IP allowlist"
+              }
+            ]
+          },
+          {
+            "url": "configure-a-search-component",
+            "text": "Configure a search component"
+          }
+        ]
+      },
+      {
+        "url": "forms",
+        "text": "Forms",
+        "children": [
+          {
+            "url": "working-with-forms-dashboards",
+            "text": "Working with Forms dashboards",
+            "children": [
+              {
+                "url": "work-with-the-forms-dashboard",
+                "text": "Work with the forms dashboard"
+              },
+              {
+                "url": "work-with-the-webhooks-dashboard",
+                "text": "Work with the webhooks dashboard"
+              },
+              {
+                "url": "filter-and-search-forms-and-webhooks",
+                "text": "Filter and search forms and webhooks"
+              }
+            ]
+          },
+          {
+            "url": "create-a-form",
+            "text": "Create a form"
+          },
+          {
+            "url": "designing-forms",
+            "text": "Designing forms",
+            "children": [
+              {
+                "url": "working-with-the-form-editor",
+                "text": "Working with the form editor"
+              },
+              {
+                "url": "work-with-form-layouts",
+                "text": "Work with form layouts"
+              },
+              {
+                "url": "work-with-field-items",
+                "text": "Work with field items",
+                "children": [
+                  {
+                    "url": "configure-field-items",
+                    "text": "Configure field items"
+                  },
+                  {
+                    "url": "prefill-fields-values",
+                    "text": "Prefill fields values"
+                  }
+                ]
+              },
+              {
+                "url": "work-with-basic-items",
+                "text": "Work with basic items",
+                "children": [
+                  {
+                    "url": "use-the-image-picker",
+                    "text": "Use the image picker"
+                  }
+                ]
+              },
+              {
+                "url": "field-validation-in-forms",
+                "text": "Field validation in forms"
+              },
+              {
+                "url": "save-an-item-or-layout-for-reuse",
+                "text": "Save an item or layout for reuse"
+              },
+              {
+                "url": "work-with-multiple-form-pages",
+                "text": "Work with multiple form pages"
+              },
+              {
+                "url": "add-a-summary-page",
+                "text": "Add a summary page"
+              },
+              {
+                "url": "add-logic-to-a-form",
+                "text": "Add logic to a form"
+              },
+              {
+                "url": "use-the-helper-grid-to-design-a-form",
+                "text": "Use the helper grid to design a form"
+              },
+              {
+                "url": "collaborate-on-a-form-design",
+                "text": "Collaborate on a form design"
+              },
+              {
+                "url": "work-with-form-templates",
+                "text": "Work with form templates"
+              }
+            ]
+          },
+          {
+            "url": "styling-forms",
+            "text": "Styling forms",
+            "children": [
+              {
+                "url": "create-a-style",
+                "text": "Create a style"
+              },
+              {
+                "url": "apply-a-style",
+                "text": "Apply a style"
+              },
+              {
+                "url": "customize-the-style-of-a-form",
+                "text": "Customize the style of a form",
+                "children": [
+                  {
+                    "url": "work-with-form-fonts",
+                    "text": "Work with form fonts"
+                  },
+                  {
+                    "url": "add-a-background-image",
+                    "text": "Add a background image"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "url": "check-a-form-s-accessibility",
+            "text": "Check a form's accessibility",
+            "children": [
+              {
+                "url": "enable-autocomplete-for-fields",
+                "text": "Enable autocomplete for fields"
+              }
+            ]
+          },
+          {
+            "url": "edit-form-settings",
+            "text": "Edit form settings",
+            "children": [
+              {
+                "url": "work-with-webhooks",
+                "text": "Work with webhooks",
+                "children": [
+                  {
+                    "url": "create-custom-events-for-webhooks",
+                    "text": "Create custom events for webhooks"
+                  }
+                ]
+              },
+              {
+                "url": "set-submit-actions",
+                "text": "Set submit actions"
+              }
+            ]
+          },
+          {
+            "url": "saving-a-form",
+            "text": "Saving a form",
+            "children": [
+              {
+                "url": "save-and-restore-a-version",
+                "text": "Save and restore a version"
+              },
+              {
+                "url": "preview-your-form-design",
+                "text": "Preview your form design"
+              }
+            ]
+          },
+          {
+            "url": "activate-a-form",
+            "text": "Activate a form"
+          },
+          {
+            "url": "enable-forms-in-the-page-builder",
+            "text": "Enable forms in the Page builder"
+          }
+        ]
+      },
+      {
+        "url": "brand-kits",
+        "text": "Brand kits",
+        "children": [
+          {
+            "url": "create-a-brand-kit",
+            "text": "Create a brand kit"
+          },
+          {
+            "url": "brand-knowledge",
+            "text": "Brand knowledge"
+          },
+          {
+            "url": "guidelines-for-uploading-brand-documents",
+            "text": "Guidelines for uploading brand documents"
+          },
+          {
+            "url": "manage-brand-kit-access",
+            "text": "Add or remove brand kit users"
+          },
+          {
+            "url": "review-or-refine-a-brand-kit-section",
+            "text": "Review or refine a brand kit section"
+          },
+          {
+            "url": "guidelines-for-do-s-and-don-ts-in-brand-kits",
+            "text": "Guidelines for Do's and Don'ts in brand kits"
+          },
+          {
+            "url": "create-a-brand-kit-subsection",
+            "text": "Create a brand kit subsection"
+          },
+          {
+            "url": "manage-a-brand-kit-and-its-sources",
+            "text": "Rename or delete brand kits, add sources"
+          },
+          {
+            "url": "using-brand-knowledge-and-brand-kit-sections-in-copilots",
+            "text": "Using brand knowledge and brand kit sections in copilots"
+          },
+          {
+            "url": "troubleshooting",
+            "text": "Troubleshooting"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "",
+    "text": "SITES &amp; PAGES"
+  },
+  {
+    "url": "build-digital-experiences",
+    "text": "Build digital experiences"
+  },
+  {
+    "url": "create-and-manage-sites",
+    "text": "Create and manage sites",
+    "children": [
+      {
+        "url": "create-a-site-collection",
+        "text": "Create a site collection",
+        "children": [
+          {
+            "url": "rename-or-delete-a-site-collection",
+            "text": "Rename or delete a site collection"
+          }
+        ]
+      },
+      {
+        "url": "create-a-site",
+        "text": "Create a site"
+      },
+      {
+        "url": "share-a-site",
+        "text": "Share a site"
+      },
+      {
+        "url": "manage-sites",
+        "text": "Manage sites"
+      },
+      {
+        "url": "define-error-pages-for-a-site",
+        "text": "Define error pages for a site"
+      },
+      {
+        "url": "configure-a-sitemap-in-channels",
+        "text": "Configure a sitemap in Channels"
+      },
+      {
+        "url": "manage-languages-and-locales",
+        "text": "Manage languages and locales"
+      },
+      {
+        "url": "configure-start-and-monitor-your-site-s-localization",
+        "text": "Configure, start, and monitor your site’s localization"
+      },
+      {
+        "url": "manage-personalization-and-analytics-for-sites",
+        "text": "Manage personalization and analytics for sites"
+      },
+      {
+        "url": "publish-and-unpublish-a-site",
+        "text": "Publish and unpublish a site"
+      },
+      {
+        "url": "sites-dashboard",
+        "text": "Sites dashboard",
+        "children": [
+          {
+            "url": "viewing-the-site-s-a-b-n-tests",
+            "text": "Viewing the site's A/B/n tests"
+          },
+          {
+            "url": "viewing-the-analytics",
+            "text": "Viewing the analytics"
+          },
+          {
+            "url": "customize-the-sites-dashboard",
+            "text": "Customize the sites dashboard"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "build-pages",
+    "text": "Build pages",
+    "children": [
+      {
+        "url": "working-with-the-page-builder",
+        "text": "Working with the Page builder",
+        "children": [
+          {
+            "url": "understanding-the-builder-s-interface",
+            "text": "Understanding the builder's interface"
+          },
+          {
+            "url": "customize-the-editor-view",
+            "text": "Customize the editor view"
+          },
+          {
+            "url": "editing-in-the-page-builder",
+            "text": "Editing in the Page builder"
+          },
+          {
+            "url": "customize-icons-in-page-builder",
+            "text": "Customize icons in Page builder"
+          }
+        ]
+      },
+      {
+        "url": "building-page-templates-and-branches",
+        "text": "Building page templates and branches",
+        "children": [
+          {
+            "url": "work-with-partial-designs",
+            "text": "Work with partial designs"
+          },
+          {
+            "url": "work-with-page-designs",
+            "text": "Work with page designs"
+          },
+          {
+            "url": "assign-a-page-design-to-a-template",
+            "text": "Assign a page design to a template"
+          },
+          {
+            "url": "configure-insert-options",
+            "text": "Configure insert options"
+          },
+          {
+            "url": "create-and-configure-a-page-branch",
+            "text": "Create and configure a page branch"
+          }
+        ]
+      },
+      {
+        "url": "creating-webpages",
+        "text": "Creating webpages",
+        "children": [
+          {
+            "url": "create-a-page",
+            "text": "Create a page"
+          },
+          {
+            "url": "work-with-versions",
+            "text": "Work with versions"
+          },
+          {
+            "url": "work-with-language-versions",
+            "text": "Work with language versions"
+          },
+          {
+            "url": "edit-the-page-settings",
+            "text": "Edit the page settings"
+          },
+          {
+            "url": "edit-a-page",
+            "text": "Edit a page"
+          },
+          {
+            "url": "edit-a-page-s-content",
+            "text": "Edit a page's content"
+          }
+        ]
+      },
+      {
+        "url": "structuring-a-page",
+        "text": "Structuring a page",
+        "children": [
+          {
+            "url": "divide-your-page-content-into-columns",
+            "text": "Divide your page content into columns",
+            "children": [
+              {
+                "url": "resizing-columns",
+                "text": "Resizing columns"
+              }
+            ]
+          },
+          {
+            "url": "divide-your-page-content-into-rows",
+            "text": "Divide your page content into rows"
+          },
+          {
+            "url": "manage-items-rows-and-columns-settings",
+            "text": "Manage items, rows, and columns settings"
+          }
+        ]
+      },
+      {
+        "url": "adding-components-to-a-page",
+        "text": "Adding components to a page",
+        "children": [
+          {
+            "url": "add-or-remove-an-element-in-a-page",
+            "text": "Add or remove an element in a page"
+          },
+          {
+            "url": "swap-move-and-reorder-components-in-a-page",
+            "text": "Swap, move and reorder components in a page"
+          },
+          {
+            "url": "duplicate-a-component",
+            "text": "Duplicate a component"
+          },
+          {
+            "url": "selecting-a-component-or-placeholder",
+            "text": "Selecting a component or placeholder"
+          },
+          {
+            "url": "working-with-code-components",
+            "text": "Working with code components"
+          },
+          {
+            "url": "configure-a-component",
+            "text": "Configure a component",
+            "children": [
+              {
+                "url": "grid-layout-settings",
+                "text": "Grid layout settings"
+              },
+              {
+                "url": "styling-and-advanced-styling-settings",
+                "text": "Styling and Advanced styling settings"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "url": "adding-content-to-a-page",
+        "text": "Adding content to a page",
+        "children": [
+          {
+            "url": "create-and-find-content",
+            "text": "Create and find content"
+          },
+          {
+            "url": "add-content-to-a-component",
+            "text": "Add content to a component"
+          },
+          {
+            "url": "understanding-your-content-status",
+            "text": "Understanding your content status"
+          },
+          {
+            "url": "understanding-content-item-usage",
+            "text": "Understanding content item usage"
+          },
+          {
+            "url": "add-rich-text-to-a-page",
+            "text": "Add rich text to a page"
+          },
+          {
+            "url": "add-a-table-to-a-page",
+            "text": "Add a table to a page"
+          },
+          {
+            "url": "add-a-media-file-to-a-page",
+            "text": "Add a media file to a page"
+          },
+          {
+            "url": "add-an-image-to-a-page",
+            "text": "Add an image to a page"
+          },
+          {
+            "url": "add-a-link-to-a-page",
+            "text": "Add a link to a page"
+          },
+          {
+            "url": "add-navigation-to-a-page",
+            "text": "Add navigation to a page"
+          },
+          {
+            "url": "add-a-background-to-a-page",
+            "text": "Add a background to a page"
+          },
+          {
+            "url": "combine-content-from-multiple-components",
+            "text": "Combine content from multiple components"
+          },
+          {
+            "url": "assign-a-content-item-from-a-local-data-source",
+            "text": "Assign a content item from a local data source"
+          },
+          {
+            "url": "assign-a-data-item-from-an-external-data-source",
+            "text": "Assign a data item from an external data source"
+          }
+        ]
+      },
+      {
+        "url": "managing-the-site-tree",
+        "text": "Managing the site tree",
+        "children": [
+          {
+            "url": "create-delete-and-rename-items",
+            "text": "Create, delete, and rename items"
+          },
+          {
+            "url": "search-and-find-pages-and-components",
+            "text": "Search and find pages and components"
+          }
+        ]
+      },
+      {
+        "url": "publishing-pages-and-referenced-items",
+        "text": "Publishing pages and referenced items",
+        "children": [
+          {
+            "url": "move-an-item-through-the-workflow",
+            "text": "Move an item through the workflow"
+          },
+          {
+            "url": "preview-scheduled-page-versions-in-a-calendar",
+            "text": "Preview scheduled page versions in a calendar"
+          },
+          {
+            "url": "publish-a-page",
+            "text": "Publish a page"
+          },
+          {
+            "url": "unpublish-a-page",
+            "text": "Unpublish a page"
+          },
+          {
+            "url": "schedule-publishing-availability-of-a-page",
+            "text": "Schedule publishing availability of a page"
+          },
+          {
+            "url": "set-an-embargo-date-on-a-media-item",
+            "text": "Set an embargo date on a media item"
+          },
+          {
+            "url": "make-a-media-item-available-on-demand",
+            "text": "Make a media item available live on-demand"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "",
+    "text": "PERFORMANCE"
+  },
+  {
+    "url": "conversion-optimization",
+    "text": "Conversion optimization"
+  },
+  {
+    "url": "personalize",
+    "text": "Personalize",
+    "children": [
+      {
+        "url": "create-a-page-variant",
+        "text": "Create a page variant"
+      },
+      {
+        "url": "edit-a-page-variant",
+        "text": "Edit a page variant"
+      },
+      {
+        "url": "creating-an-audience",
+        "text": "Creating an audience"
+      },
+      {
+        "url": "specifying-variables-for-conditions",
+        "text": "Specifying variables for conditions"
+      },
+      {
+        "url": "understanding-the-order-of-operations-in-conditions",
+        "text": "Understanding the order of operations in conditions"
+      },
+      {
+        "url": "work-with-condition-groups",
+        "text": "Work with condition groups"
+      },
+      {
+        "url": "create-a-custom-condition",
+        "text": "Create a custom condition",
+        "children": [
+          {
+            "url": "create-a-condition-with-the-code-assistant",
+            "text": "Create a condition with the Code Assistant"
+          },
+          {
+            "url": "condition-elements",
+            "text": "Condition elements"
+          },
+          {
+            "url": "types-of-parameters-for-conditions",
+            "text": "Types of parameters"
+          },
+          {
+            "url": "context-parameters-for-conditions",
+            "text": "Context parameters for conditions"
+          },
+          {
+            "url": "test-a-condition",
+            "text": "Test a condition",
+            "children": [
+              {
+                "url": "test-an-advanced-condition",
+                "text": "Test an advanced condition"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "component-personalization",
+    "text": "Component personalization",
+    "children": [
+      {
+        "url": "get-started-with-component-personalization",
+        "text": "Get started with component personalization"
+      },
+      {
+        "url": "personalize-a-component",
+        "text": "Personalize a component"
+      },
+      {
+        "url": "test-the-component-personalization",
+        "text": "Test the personalization"
+      },
+      {
+        "url": "start-the-component-personalization",
+        "text": "Start the personalization"
+      },
+      {
+        "url": "view-analytics-for-a-personalized-component",
+        "text": "View analytics"
+      },
+      {
+        "url": "pause-the-component-personalization",
+        "text": "Pause the personalization"
+      },
+      {
+        "url": "decision-tables",
+        "text": "Decision tables",
+        "children": [
+          {
+            "url": "decision-table-inputs",
+            "text": "Inputs",
+            "children": [
+              {
+                "url": "create-custom-values",
+                "text": "Create custom values"
+              },
+              {
+                "url": "manage-custom-values",
+                "text": "Manage custom values"
+              }
+            ]
+          },
+          {
+            "url": "decision-table-rules",
+            "text": "Rules"
+          },
+          {
+            "url": "decision-table-outputs",
+            "text": "Outputs"
+          },
+          {
+            "url": "manage-decision-table-inputs-and-rules",
+            "text": "Manage decision table inputs and rules"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "a-b-n-testing",
+    "text": "A/B/n testing",
+    "children": [
+      {
+        "url": "components-to-a-b-n-test-on-your-website",
+        "text": "Components to A/B/n test on your website"
+      },
+      {
+        "url": "best-practices-for-a-b-n-testing",
+        "text": "Best practices for A/B/n testing"
+      },
+      {
+        "url": "get-started-with-a-b-n-testing",
+        "text": "Get started with A/B/n testing",
+        "children": [
+          {
+            "url": "create-an-a-b-n-test",
+            "text": "Create an A/B/n test"
+          },
+          {
+            "url": "configure-a-b-n-test-settings",
+            "text": "Configure A/B/n test settings"
+          },
+          {
+            "url": "start-an-a-b-n-test",
+            "text": "Start an A/B/n test"
+          },
+          {
+            "url": "rename-reset-or-delete-a-variant",
+            "text": "Rename, reset, or delete a variant"
+          },
+          {
+            "url": "edit-or-delete-an-a-b-n-test",
+            "text": "Edit or delete an A/B/n test"
+          },
+          {
+            "url": "end-an-a-b-n-test",
+            "text": "End an A/B/n test"
+          }
+        ]
+      },
+      {
+        "url": "a-b-n-test-statuses",
+        "text": "A/B/n test statuses"
+      },
+      {
+        "url": "a-b-n-test-hypothesis-and-goal",
+        "text": "A/B/n test hypothesis and goal"
+      },
+      {
+        "url": "test-metrics-and-calculations",
+        "text": "Test metrics and calculations"
+      }
+    ]
+  },
+  {
+    "url": "get-performance-insights",
+    "text": "Get performance insights",
+    "children": [
+      {
+        "url": "sites-performance-dashboard",
+        "text": "Sites performance"
+      },
+      {
+        "url": "forms-performance-dashboard",
+        "text": "Forms performance"
+      },
+      {
+        "url": "a-b-n-tests-performance-dashboard",
+        "text": "A/B/n tests performance"
+      },
+      {
+        "url": "page-insights-dashboard-in-analyze",
+        "text": "Page insights"
+      },
+      {
+        "url": "search-dashboard",
+        "text": "Search dashboard"
+      },
+      {
+        "url": "events-dashboard",
+        "text": "Events dashboard"
+      },
+      {
+        "url": "traffic-dashboard",
+        "text": "Traffic dashboard"
+      }
+    ]
+  },
+  {
+    "url": "",
+    "text": "PUBLISH"
+  },
+  {
+    "url": "publish-content-in-sitecoreai",
+    "text": "Publish content",
+    "children": [
+      {
+        "url": "the-publishing-jobs-table",
+        "text": "The publishing jobs table"
+      },
+      {
+        "url": "understanding-the-publishing-job-status-and-status-details",
+        "text": "Understanding the publishing job status and status details"
+      },
+      {
+        "url": "cancel-a-publishing-job",
+        "text": "Cancel a publishing job"
+      }
+    ]
+  },
+  {
+    "url": "",
+    "text": "CONTENT"
+  },
+  {
+    "url": "manage-content",
+    "text": "Manage content",
+    "children": [
+      {
+        "url": "content-editor",
+        "text": "Content Editor",
+        "children": [
+          {
+            "url": "the-editing-tools",
+            "text": "The editing tools",
+            "children": [
+              {
+                "url": "change-your-personal-settings",
+                "text": "Change your personal settings"
+              },
+              {
+                "url": "the-content-editor",
+                "text": "The Content Editor",
+                "children": [
+                  {
+                    "url": "the-application-options",
+                    "text": "The Application Options"
+                  },
+                  {
+                    "url": "customize-the-content-editor",
+                    "text": "Customize the Content Editor"
+                  },
+                  {
+                    "url": "set-up-a-reminder-email-message",
+                    "text": "Set up a reminder email message"
+                  }
+                ]
+              },
+              {
+                "url": "the-rule-set-editor",
+                "text": "The Rule Set Editor"
+              }
+            ]
+          },
+          {
+            "url": "creating-and-editing-items",
+            "text": "Creating and editing items",
+            "children": [
+              {
+                "url": "create-an-item-in-the-content-editor",
+                "text": "Create an item in the Content Editor"
+              },
+              {
+                "url": "copy-or-duplicate-an-item",
+                "text": "Copy or duplicate an item"
+              },
+              {
+                "url": "exclude-subitems-when-duplicating-a-page",
+                "text": "Exclude subitems when duplicating a page"
+              },
+              {
+                "url": "editing",
+                "text": "Editing",
+                "children": [
+                  {
+                    "url": "lock-and-unlock-an-item",
+                    "text": "Lock and unlock an item"
+                  },
+                  {
+                    "url": "edit-the-website-content",
+                    "text": "Edit the website content"
+                  },
+                  {
+                    "url": "manage-associated-content",
+                    "text": "Manage associated content"
+                  },
+                  {
+                    "url": "edit-the-layout-of-an-item",
+                    "text": "Edit the layout of an item"
+                  },
+                  {
+                    "url": "set-which-renderings-are-allowed-in-a-placeholder",
+                    "text": "Set which renderings are allowed in a placeholder"
+                  },
+                  {
+                    "url": "reset-the-field-values-of-an-item",
+                    "text": "Reset the field values of an item"
+                  },
+                  {
+                    "url": "run-a-spell-check-on-an-item",
+                    "text": "Run a spell check on an item"
+                  }
+                ]
+              },
+              {
+                "url": "versioning",
+                "text": "Versioning",
+                "children": [
+                  {
+                    "url": "compare-two-versions-of-an-item",
+                    "text": "Compare two versions of an item"
+                  },
+                  {
+                    "url": "switch-between-the-versions-of-an-item",
+                    "text": "Switch between the versions of an item"
+                  },
+                  {
+                    "url": "add-a-language-to-your-environment",
+                    "text": "Add a language to your environment"
+                  },
+                  {
+                    "url": "import-or-export-language-content",
+                    "text": "Import or export language content"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "url": "managing-items",
+            "text": "Managing items",
+            "children": [
+              {
+                "url": "workflows-and-the-workbox",
+                "text": "Workflows and the Workbox",
+                "children": [
+                  {
+                    "url": "the-workbox-commands",
+                    "text": "The Workbox commands"
+                  },
+                  {
+                    "url": "review-an-item-in-the-workbox",
+                    "text": "Review an item in the Workbox"
+                  },
+                  {
+                    "url": "move-an-item-to-the-next-workflow-state",
+                    "text": "Move an item to the next workflow state"
+                  }
+                ]
+              },
+              {
+                "url": "clones",
+                "text": "Clones",
+                "children": [
+                  {
+                    "url": "clone-multiple-items",
+                    "text": "Clone multiple items"
+                  },
+                  {
+                    "url": "the-impact-of-versions-on-clones",
+                    "text": "The impact of versions on clones"
+                  }
+                ]
+              },
+              {
+                "url": "item-buckets",
+                "text": "Item buckets",
+                "children": [
+                  {
+                    "url": "convert-an-item-into-an-item-bucket",
+                    "text": "Convert an item into an item bucket"
+                  },
+                  {
+                    "url": "save-a-search-query-for-an-item-bucket",
+                    "text": "Save a search query for an item bucket"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "url": "publishing",
+            "text": "Publishing",
+            "children": [
+              {
+                "url": "validate-an-item",
+                "text": "Validate an item"
+              },
+              {
+                "url": "preview-a-webpage-using-the-content-editor",
+                "text": "Preview a webpage using the Content Editor"
+              },
+              {
+                "url": "publish-an-item-to-your-website",
+                "text": "Publish an item to your website"
+              },
+              {
+                "url": "publish-a-website",
+                "text": "Publish a website"
+              },
+              {
+                "url": "set-up-publishing-restrictions-for-an-item",
+                "text": "Set up publishing restrictions for an item"
+              }
+            ]
+          },
+          {
+            "url": "searching",
+            "text": "Searching",
+            "children": [
+              {
+                "url": "search-for-an-item",
+                "text": "Search for an item"
+              },
+              {
+                "url": "filter-the-search-results",
+                "text": "Filter the search results",
+                "children": [
+                  {
+                    "url": "the-search-filters",
+                    "text": "The search filters"
+                  },
+                  {
+                    "url": "the-search-operations",
+                    "text": "The search operations"
+                  },
+                  {
+                    "url": "perform-an-operation-on-search-results",
+                    "text": "Perform an operation on search results"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "url": "page-designs-and-page-branches",
+            "text": "Page designs and page branches",
+            "children": [
+              {
+                "url": "create-and-assign-a-page-design-in-the-content-editor",
+                "text": "Create and assign a page design in the Content Editor"
+              },
+              {
+                "url": "use-a-rule-to-select-a-page-design-for-a-page",
+                "text": "Use a rule to select a page design for a page"
+              },
+              {
+                "url": "create-a-page-branch",
+                "text": "Create a page branch"
+              }
+            ]
+          },
+          {
+            "url": "redirect-urls",
+            "text": "Redirect URLs"
+          }
+        ]
+      },
+      {
+        "url": "explorer",
+        "text": "Explorer",
+        "children": [
+          {
+            "url": "manage-content-items",
+            "text": "Manage content items"
+          },
+          {
+            "url": "create-a-content-item-and-versions",
+            "text": "Create a content item and versions"
+          },
+          {
+            "url": "schedule-availability-for-a-content-item",
+            "text": "Schedule availability for a content item"
+          },
+          {
+            "url": "search-and-find-a-content-item",
+            "text": "Search and find a content item"
+          },
+          {
+            "url": "edit-an-item-in-explorer",
+            "text": "Edit an item in Explorer",
+            "children": [
+              {
+                "url": "edit-an-image-field-in-explorer",
+                "text": "Edit an image field in Explorer"
+              },
+              {
+                "url": "edit-a-link-field-in-explorer",
+                "text": "Edit a link field in Explorer"
+              }
+            ]
+          },
+          {
+            "url": "publish-a-content-item",
+            "text": "Publish a content item"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "",
+    "text": "MEDIA"
+  },
+  {
+    "url": "manage-media",
+    "text": "Manage media",
+    "children": [
+      {
+        "url": "modern-media-library",
+        "text": "Modern Media Library",
+        "children": [
+          {
+            "url": "upload-a-media-file",
+            "text": "Upload a media file"
+          },
+          {
+            "url": "search-for-media-items",
+            "text": "Search for media items",
+            "children": [
+              {
+                "url": "best-practices-when-using-visual-search",
+                "text": "Best practices when using visual search"
+              }
+            ]
+          },
+          {
+            "url": "filter-media-items",
+            "text": "Filter media items"
+          },
+          {
+            "url": "edit-a-media-item",
+            "text": "Edit a media item"
+          },
+          {
+            "url": "set-or-remove-a-focal-point",
+            "text": "Set or remove a focal point"
+          },
+          {
+            "url": "add-a-public-link",
+            "text": "Add a public link"
+          },
+          {
+            "url": "download-a-media-item",
+            "text": "Download a media item"
+          },
+          {
+            "url": "delete-media",
+            "text": "Delete media"
+          }
+        ]
+      },
+      {
+        "url": "media-library",
+        "text": "Legacy Media Library",
+        "children": [
+          {
+            "url": "media-items",
+            "text": "Media items"
+          },
+          {
+            "url": "navigate-the-media-library",
+            "text": "Navigate the Media Library"
+          },
+          {
+            "url": "insert-an-image-into-fields-using-the-content-editor",
+            "text": "Insert an image into fields using the Content Editor"
+          },
+          {
+            "url": "edit-image-properties",
+            "text": "Edit image properties"
+          },
+          {
+            "url": "exif-data-on-media-items",
+            "text": "Exif data on media items"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "",
+    "text": "AI FEATURES"
+  },
+  {
+    "url": "working-with-agentic-studio",
+    "text": "Agentic studio",
+    "children": [
+      {
+        "url": "get-started-with-the-agentic-studio",
+        "text": "Get started",
+        "children": [
+          {
+            "url": "the-agentic-studio-toolkit",
+            "text": "The Agentic Studio toolkit"
+          }
+        ]
+      },
+      {
+        "url": "understanding-chat",
+        "text": "Chat",
+        "children": [
+          {
+            "url": "chat-features-and-tools",
+            "text": "Chat features and tools"
+          },
+          {
+            "url": "agent-sequencing-within-a-single-chat",
+            "text": "Agent sequencing within chat"
+          },
+          {
+            "url": "review-ai-proposed-changes-in-the-chat-interface",
+            "text": "Review AI-proposed changes in the Chat interface"
+          },
+          {
+            "url": "convert-a-chat-to-a-space",
+            "text": "Convert a chat to a space"
+          },
+          {
+            "url": "troubleshoot-chats",
+            "text": "Troubleshoot chats"
+          }
+        ]
+      },
+      {
+        "url": "understanding-agents",
+        "text": "Agents",
+        "children": [
+          {
+            "url": "",
+            "text": "Prebuilt agents",
+            "children": [
+              {
+                "url": "account-data-enricher",
+                "text": "Account data enricher"
+              },
+              {
+                "url": "aeo-seo-researcher",
+                "text": "AEO/SEO researcher"
+              },
+              {
+                "url": "audience-summary",
+                "text": "Audience summary"
+              },
+              {
+                "url": "blog-writer",
+                "text": "Blog writer"
+              },
+              {
+                "url": "brief-generator",
+                "text": "Brief generator"
+              },
+              {
+                "url": "bulk-content-generator",
+                "text": "Bulk content generator"
+              },
+              {
+                "url": "competitor-analyzer",
+                "text": "Competitor analyzer"
+              },
+              {
+                "url": "content-generator",
+                "text": "Content generator"
+              },
+              {
+                "url": "email-writer",
+                "text": "Email writer"
+              },
+              {
+                "url": "market-signals",
+                "text": "Market signals"
+              },
+              {
+                "url": "persona-content-auditor",
+                "text": "Persona content auditor"
+              },
+              {
+                "url": "quote-extractor",
+                "text": "Quote extractor"
+              },
+              {
+                "url": "researcher",
+                "text": "Researcher"
+              },
+              {
+                "url": "snackable-content-generator",
+                "text": "Snackable content generator"
+              },
+              {
+                "url": "structured-content-extractor",
+                "text": "Structured content extractor"
+              },
+              {
+                "url": "summarizer",
+                "text": "Summarizer"
+              },
+              {
+                "url": "translator",
+                "text": "Translator"
+              }
+            ]
+          },
+          {
+            "url": "",
+            "text": "Custom agents",
+            "children": [
+              {
+                "url": "when-to-use-a-standard-agent-or-a-workflow-agent",
+                "text": "When to use an agent or workflow"
+              },
+              {
+                "url": "create-a-standard-agent",
+                "text": "Create a standard agent"
+              },
+              {
+                "url": "create-a-workflow-agent",
+                "text": "Create a workflow agent",
+                "children": [
+                  {
+                    "url": "overview-of-agent-configuration-tabs",
+                    "text": "Overview of agent configuration tabs"
+                  }
+                ]
+              },
+              {
+                "url": "available-actions-in-the-workflow-editor",
+                "text": "Available actions in the workflow editor",
+                "children": [
+                  {
+                    "url": "using-invoke-tool-in-a-workflow",
+                    "text": "Using Invoke tool in a workflow"
+                  },
+                  {
+                    "url": "using-http-request-in-a-workflow",
+                    "text": "Using HTTP Request in a workflow"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "url": "agent-skills",
+            "text": "Agent skills"
+          },
+          {
+            "url": "run-an-agent",
+            "text": "Run an agent",
+            "children": [
+              {
+                "url": "use-items-when-running-agents",
+                "text": "Use items when running agents"
+              }
+            ]
+          },
+          {
+            "url": "edit-agent-configuration",
+            "text": "Edit agent configuration"
+          },
+          {
+            "url": "duplicate-an-agent",
+            "text": "Duplicate an agent"
+          },
+          {
+            "url": "delete-a-custom-agent",
+            "text": "Delete a custom agent"
+          },
+          {
+            "url": "manage-agent-visibility",
+            "text": "Manage agent visibility"
+          },
+          {
+            "url": "export-or-import-an-agent",
+            "text": "Export or import an agent"
+          },
+          {
+            "url": "troubleshoot-agents",
+            "text": "Troubleshoot agents"
+          }
+        ]
+      },
+      {
+        "url": "understanding-spaces",
+        "text": "Spaces",
+        "children": [
+          {
+            "url": "open-a-space",
+            "text": "Open a space"
+          },
+          {
+            "url": "create-a-space",
+            "text": "Create a space",
+            "children": [
+              {
+                "url": "adaptive-optimization",
+                "text": "Adaptive optimization"
+              },
+              {
+                "url": "context-aware-content",
+                "text": "Context-aware content"
+              },
+              {
+                "url": "abm-campaign",
+                "text": "ABM campaign"
+              }
+            ]
+          },
+          {
+            "url": "manage-collaborators-in-a-space",
+            "text": "Manage collaborators in a space"
+          },
+          {
+            "url": "rename-a-space",
+            "text": "Rename a space"
+          },
+          {
+            "url": "change-the-status-of-a-space",
+            "text": "Change the status of a space"
+          },
+          {
+            "url": "chat-in-a-space",
+            "text": "Chat in a space"
+          },
+          {
+            "url": "manage-an-artifact",
+            "text": "Manage an artifact"
+          },
+          {
+            "url": "run-additional-agents-within-a-space",
+            "text": "Run additional agents within a space"
+          },
+          {
+            "url": "convert-an-artifact-into-a-sitecoreai-item",
+            "text": "Convert an artifact into a SitecoreAI item"
+          },
+          {
+            "url": "delete-a-space",
+            "text": "Delete a space"
+          }
+        ]
+      },
+      {
+        "url": "understanding-signals",
+        "text": "Signals",
+        "children": [
+          {
+            "url": "manage-a-signal",
+            "text": "Manage a signal"
+          },
+          {
+            "url": "set-preferences-for-market-signals",
+            "text": "Set preferences for market signals"
+          }
+        ]
+      },
+      {
+        "url": "agentic-studio-settings",
+        "text": "Settings",
+        "children": [
+          {
+            "url": "tools-available-to-chats-and-agents",
+            "text": "Tools available to chats and agents"
+          },
+          {
+            "url": "add-a-custom-connector-to-your-mcp-server",
+            "text": "Add a custom connector to your MCP server"
+          },
+          {
+            "url": "create-or-edit-a-skill",
+            "text": "Create or edit a skill"
+          },
+          {
+            "url": "create-or-edit-a-widget",
+            "text": "Create or edit a widget"
+          },
+          {
+            "url": "create-or-edit-a-schema",
+            "text": "Create or edit a schema"
+          },
+          {
+            "url": "create-or-edit-an-html-template",
+            "text": "Create or edit an HTML template"
+          },
+          {
+            "url": "monitor-processing-jobs",
+            "text": "Monitor processing jobs"
+          },
+          {
+            "url": "manage-users",
+            "text": "Manage users"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "sitecore-marketer-mcp-server",
+    "text": "Marketer MCP",
+    "children": [
+      {
+        "url": "marketer-mcp-tool-reference-and-other-information",
+        "text": "Marketer MCP tool reference and other information"
+      },
+      {
+        "url": "marketer-mcp-and-agent-api-overview",
+        "text": "Marketer MCP and Agent API overview"
+      },
+      {
+        "url": "integrating-sitecore-with-agentic-platforms",
+        "text": "Integrating Sitecore with agentic platforms"
+      }
+    ]
+  },
+  {
+    "url": "ai-capabilities-in-sitecoreai",
+    "text": "AI capabilities in SitecoreAI",
+    "children": [
+      {
+        "url": "assign-a-brand-kit-to-a-site",
+        "text": "Assign a brand kit to a site"
+      },
+      {
+        "url": "optimize-content-with-ai",
+        "text": "Optimize content with AI"
+      },
+      {
+        "url": "translation-in-sitecoreai",
+        "text": "Translation in SitecoreAI",
+        "children": [
+          {
+            "url": "translate-an-entire-site-with-ai",
+            "text": "Translate an entire site with AI"
+          },
+          {
+            "url": "translate-a-page-with-ai",
+            "text": "Translate a page with AI"
+          },
+          {
+            "url": "translate-a-content-item-with-ai",
+            "text": "Translate a content item with AI"
+          },
+          {
+            "url": "managing-translation-terms-in-glossary-and-localization",
+            "text": "Managing translation terms in Glossary and Localization"
+          }
+        ]
+      },
+      {
+        "url": "run-an-a-b-n-test-with-an-ai-optimized-variant",
+        "text": "Run an A/B/n test with an AI-optimized variant"
+      },
+      {
+        "url": "personalize-pages-with-ai",
+        "text": "Personalize pages with AI"
+      }
+    ]
+  },  
+  {
+    "url": "",
+    "text": "RESOURCES"
+  },
+  {
+    "url": "glossary",
+    "text": "Glossary"
+  }
+]

@@ -1,4 +1,5 @@
-name: Analyze Jira Doc Impact
+---
+description: Analyze a Jira ticket against docs content and TOC to identify likely documentation impact.
 
 on:
   workflow_dispatch:
@@ -10,173 +11,177 @@ on:
 
 permissions:
   contents: read
+  copilot-requests: write
 
-jobs:
-  analyze:
-    runs-on: ubuntu-latest
+engine: copilot
+
+tools:
+  edit:
+  bash:
+    - cat
+    - head
+    - tail
+    - sed
+    - grep
+    - sort
+    - uniq
+    - wc
+    - find
+    - jq
+    - rg
+
+steps:
+  - name: Validate Jira secrets
+    shell: bash
     env:
       JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
       JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
       JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    run: |
+      test -n "$JIRA_BASE_URL"
+      test -n "$JIRA_EMAIL"
+      test -n "$JIRA_API_TOKEN"
 
-      - name: Validate Jira secrets
-        shell: bash
-        run: |
-          test -n "$JIRA_BASE_URL"
-          test -n "$JIRA_EMAIL"
-          test -n "$JIRA_API_TOKEN"
+  - name: Fetch Jira issue
+    id: jira
+    shell: bash
+    env:
+      JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+      JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+    run: |
+      curl -sS \
+        -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
+        -H "Accept: application/json" \
+        "$JIRA_BASE_URL/rest/api/3/issue/${{ inputs.jira_key }}" > jira-issue.json
 
-      - name: Fetch Jira issue
-        id: jira
-        shell: bash
-        run: |
-          ISSUE_JSON=$(curl -sS \
-            -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
-            -H "Accept: application/json" \
-            "$JIRA_BASE_URL/rest/api/3/issue/${{ inputs.jira_key }}")
-
-          echo "$ISSUE_JSON" > jira-issue.json
-
-          SUMMARY=$(jq -r '.fields.summary // ""' jira-issue.json)
-          DESCRIPTION=$(jq -r '
-            .fields.description.content // []
-            | map(
-                .content // []
-                | map(.text // "")
-                | join(" ")
-              )
+      jq -r '.fields.summary // ""' jira-issue.json > jira-summary.txt
+      jq -r '
+        .fields.description.content // []
+        | map(
+            .content // []
+            | map(.text // "")
             | join(" ")
-          ' jira-issue.json)
-          COMPONENTS=$(jq -r '.fields.components // [] | map(.name) | join(" ")' jira-issue.json)
-          LABELS=$(jq -r '.fields.labels // [] | join(" ")' jira-issue.json)
+          )
+        | join(" ")
+      ' jira-issue.json > jira-description.txt
 
-          SEARCH_TEXT="${{ inputs.jira_key }} $SUMMARY $DESCRIPTION $COMPONENTS $LABELS"
+      jq -r '.fields.components // [] | map(.name) | join(" ")' jira-issue.json > jira-components.txt
+      jq -r '.fields.labels // [] | join(" ")' jira-issue.json > jira-labels.txt
 
-          {
-            echo "summary<<EOF"
-            echo "$SUMMARY"
-            echo "EOF"
-            echo "description<<EOF"
-            echo "$DESCRIPTION"
-            echo "EOF"
-            echo "components<<EOF"
-            echo "$COMPONENTS"
-            echo "EOF"
-            echo "labels<<EOF"
-            echo "$LABELS"
-            echo "EOF"
-            echo "search_text<<EOF"
-            echo "$SEARCH_TEXT"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+  - name: Build deterministic candidate set
+    shell: bash
+    run: |
+      cat jira-summary.txt jira-description.txt jira-components.txt jira-labels.txt > jira-search-source.txt
 
-      - name: Build search terms
-        id: terms
-        shell: bash
-        run: |
-          printf "%s\n" "${{ steps.jira.outputs.search_text }}" \
-            | tr '[:upper:]' '[:lower:]' \
-            | sed -E 's/[^a-z0-9]+/\n/g' \
-            | sed '/^$/d' \
-            | awk 'length($0) >= 4' \
-            | sort -u \
-            | head -n 20 > terms.txt
+      tr '[:upper:]' '[:lower:]' < jira-search-source.txt \
+        | sed -E 's/[^a-z0-9]+/\n/g' \
+        | sed '/^$/d' \
+        | awk 'length($0) >= 4' \
+        | sort -u \
+        | head -n 20 > terms.txt
 
-          {
-            echo "terms<<EOF"
-            cat terms.txt
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+      : > matches.txt
+      find docs -type f \( -name "*.md" -o -name "toc.json" \) | sort > docs-files.txt
 
-      - name: Find likely matching docs
-        id: matches
-        shell: bash
-        run: |
-          : > matches.txt
+      while IFS= read -r term; do
+        rg -i -l "$term" docs --glob "*.md" --glob "toc.json" >> matches.txt || true
+        grep -i "$term" docs-files.txt >> matches.txt || true
+      done < terms.txt
 
-          echo "Scanning ref: $GITHUB_REF"
-          echo "Docs files present:"
-          find docs -type f \( -name "*.md" -o -name "toc.json" \) | sort | tee docs-files.txt
+      SUMMARY=$(cat jira-summary.txt)
+      if [ -n "$SUMMARY" ]; then
+        rg -i -l "$SUMMARY" docs --glob "*.md" --glob "toc.json" >> matches.txt || true
+      fi
 
-          while IFS= read -r term; do
-            rg -i -l "$term" docs --glob "*.md" --glob "toc.json" >> matches.txt || true
-            find docs -type f \( -name "*.md" -o -name "toc.json" \) | grep -i "$term" >> matches.txt || true
-          done < terms.txt
+      sort -u matches.txt > unique-matches.txt
 
-          SUMMARY="${{ steps.jira.outputs.summary }}"
-          if [ -n "$SUMMARY" ]; then
-            rg -i -l "$SUMMARY" docs --glob "*.md" --glob "toc.json" >> matches.txt || true
-          fi
+post-steps:
+  - name: Upload analysis inputs and outputs
+    if: always()
+    uses: actions/upload-artifact@v4
+    with:
+      name: jira-doc-impact-${{ inputs.jira_key }}
+      path: |
+        jira-issue.json
+        jira-summary.txt
+        jira-description.txt
+        jira-components.txt
+        jira-labels.txt
+        terms.txt
+        docs-files.txt
+        unique-matches.txt
+        ai-analysis.md
+        ai-analysis.json
+---
 
-          if [ -f "docs/toc.json" ]; then
-            echo "TOC file detected: docs/toc.json"
-          fi
+# Analyze Jira Documentation Impact
 
-          sort -u matches.txt > unique-matches.txt
+Use the deterministic context that was prepared in the workflow steps.
 
-          echo "Matched files:"
-          cat unique-matches.txt || true
+Primary inputs:
 
-          {
-            echo "files<<EOF"
-            cat unique-matches.txt
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+- `jira-issue.json`
+- `jira-summary.txt`
+- `jira-description.txt`
+- `jira-components.txt`
+- `jira-labels.txt`
+- `terms.txt`
+- `docs-files.txt`
+- `unique-matches.txt`
+- `docs/toc.json`
 
-      - name: Write analysis summary
-        shell: bash
-        run: |
-          TOC_IMPACT="No"
-          if grep -qx "docs/toc.json" unique-matches.txt 2>/dev/null; then
-            TOC_IMPACT="Yes"
-          fi
+Your task is to review the Jira issue and the candidate docs, then produce two files:
+- `ai-analysis.md`
+- `ai-analysis.json`
 
-          {
-            echo "# Jira Analysis"
-            echo
-            echo "- Jira key: \`${{ inputs.jira_key }}\`"
-            echo "- Summary: ${{ steps.jira.outputs.summary }}"
-            echo "- TOC impact likely: $TOC_IMPACT"
-            echo
-            echo "## Search Terms"
-            echo
-            sed 's/^/- /' terms.txt
-            echo
-            echo "## Likely Affected Files"
-            echo
-            if [ -s unique-matches.txt ]; then
-              sed 's/^/- /' unique-matches.txt
-            else
-              echo "- No matching docs found automatically"
-            fi
-            echo
-            echo "## Navigation Impact"
-            echo
-            if [ "$TOC_IMPACT" = "Yes" ]; then
-              echo "- Review \`docs/toc.json\` for new entries, renamed topics, moved topics, or section changes"
-            else
-              echo "- No direct TOC match found automatically, but confirm whether navigation still needs an update"
-            fi
-            echo
-            echo "## Recommended Next Review"
-            echo
-            echo "- Confirm whether the matched files are truly in scope"
-            echo "- Identify any net-new topics not captured by keyword matching"
-            echo "- Decide whether the issue needs update, create, restructure, or deprecate actions"
-            echo "- Capture any missing SME input before drafting"
-          } > analysis-summary.md
+Read `unique-matches.txt` first, then inspect the most relevant matched Markdown files and `docs/toc.json`.
 
-          cat analysis-summary.md >> "$GITHUB_STEP_SUMMARY"
+Treat the deterministic search results as candidate files, not final truth.
 
-      - name: Upload analysis artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: jira-doc-analysis-${{ inputs.jira_key }}
-          path: |
-            jira-issue.json
-            terms.txt
-            unique-matches.txt
-            analysis-summary.md
+Your goals:
+- identify which files are most likely affected
+- distinguish likely primary files from related context files
+- decide whether this is mainly a `create`, `update`, `restructure`, or `delete` documentation task
+- decide whether a net-new topic is likely needed
+- decide whether `docs/toc.json` likely needs updating
+- identify the likely documentation changes needed
+- list open questions or assumptions that require human review
+
+Use this rubric:
+- Prefer precision over breadth.
+- Do not list every loosely related file as a primary file.
+- If the Jira wording indicates a new topic, say so explicitly even if several related files already exist.
+- If navigation is likely affected, call that out even when `docs/toc.json` did not appear in deterministic matches.
+- If the deterministic results are noisy, narrow them down.
+
+Write `ai-analysis.json` in this exact shape:
+
+    {
+      "jira_key": "",
+      "summary": "",
+      "action_type": "create",
+      "net_new_topic": true,
+      "toc_update_likely": true,
+      "primary_files": [],
+      "related_context_files": [],
+      "recommended_changes": [],
+      "open_questions": [],
+      "assumptions": [],
+      "confidence": "medium"
+    }
+
+Allowed values:
+- `action_type`: `create`, `update`, `restructure`, `delete`
+- `confidence`: `low`, `medium`, `high`
+
+Write `ai-analysis.md` as a concise human-readable report with these sections:
+1. `Summary`
+2. `Primary Files`
+3. `Related Context`
+4. `Navigation Impact`
+5. `Recommended Doc Changes`
+6. `Open Questions`
+7. `Confidence`
+
+If no matched file is truly primary, say so clearly and recommend a net-new topic.

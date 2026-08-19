@@ -7,6 +7,18 @@ on:
         description: Jira key, for example ABC-123
         required: true
         type: string
+  workflow_call:
+    inputs:
+      jira_key:
+        required: true
+        type: string
+    secrets:
+      JIRA_BASE_URL:
+        required: true
+      JIRA_EMAIL:
+        required: true
+      JIRA_API_TOKEN:
+        required: true
 
 permissions:
   contents: read

@@ -1,0 +1,151 @@
+name: Analyze Jira Doc Impact
+
+on:
+  workflow_dispatch:
+    inputs:
+      jira_key:
+        description: Jira key, for example ABC-123
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    env:
+      JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+      JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate Jira secrets
+        shell: bash
+        run: |
+          test -n "$JIRA_BASE_URL"
+          test -n "$JIRA_EMAIL"
+          test -n "$JIRA_API_TOKEN"
+
+      - name: Fetch Jira issue
+        id: jira
+        shell: bash
+        run: |
+          ISSUE_JSON=$(curl -sS \
+            -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
+            -H "Accept: application/json" \
+            "$JIRA_BASE_URL/rest/api/3/issue/${{ inputs.jira_key }}")
+
+          echo "$ISSUE_JSON" > jira-issue.json
+
+          SUMMARY=$(jq -r '.fields.summary // ""' jira-issue.json)
+          DESCRIPTION=$(jq -r '
+            .fields.description.content // []
+            | map(
+                .content // []
+                | map(.text // "")
+                | join(" ")
+              )
+            | join(" ")
+          ' jira-issue.json)
+          COMPONENTS=$(jq -r '.fields.components // [] | map(.name) | join(" ")' jira-issue.json)
+          LABELS=$(jq -r '.fields.labels // [] | join(" ")' jira-issue.json)
+
+          SEARCH_TEXT="${{ inputs.jira_key }} $SUMMARY $DESCRIPTION $COMPONENTS $LABELS"
+
+          {
+            echo "summary<<EOF"
+            echo "$SUMMARY"
+            echo "EOF"
+            echo "description<<EOF"
+            echo "$DESCRIPTION"
+            echo "EOF"
+            echo "components<<EOF"
+            echo "$COMPONENTS"
+            echo "EOF"
+            echo "labels<<EOF"
+            echo "$LABELS"
+            echo "EOF"
+            echo "search_text<<EOF"
+            echo "$SEARCH_TEXT"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Build search terms
+        id: terms
+        shell: bash
+        run: |
+          printf "%s\n" "${{ steps.jira.outputs.search_text }}" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed -E 's/[^a-z0-9]+/\n/g' \
+            | sed '/^$/d' \
+            | awk 'length($0) >= 4' \
+            | sort -u \
+            | head -n 20 > terms.txt
+
+          {
+            echo "terms<<EOF"
+            cat terms.txt
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Find likely matching docs
+        id: matches
+        shell: bash
+        run: |
+          : > matches.txt
+
+          while IFS= read -r term; do
+            rg -i -l --glob "docs/**" --glob "*.md" "$term" . >> matches.txt || true
+          done < terms.txt
+
+          sort -u matches.txt > unique-matches.txt
+
+          {
+            echo "files<<EOF"
+            cat unique-matches.txt
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Write analysis summary
+        shell: bash
+        run: |
+          {
+            echo "# Jira Analysis"
+            echo
+            echo "- Jira key: \`${{ inputs.jira_key }}\`"
+            echo "- Summary: ${{ steps.jira.outputs.summary }}"
+            echo
+            echo "## Search Terms"
+            echo
+            sed 's/^/- /' terms.txt
+            echo
+            echo "## Likely Affected Files"
+            echo
+            if [ -s unique-matches.txt ]; then
+              sed 's/^/- /' unique-matches.txt
+            else
+              echo "- No matching docs found automatically"
+            fi
+            echo
+            echo "## Recommended Next Review"
+            echo
+            echo "- Confirm whether the matched files are truly in scope"
+            echo "- Identify any net-new topics not captured by keyword matching"
+            echo "- Decide whether the issue needs update, create, restructure, or deprecate actions"
+            echo "- Capture any missing SME input before drafting"
+          } > analysis-summary.md
+
+          cat analysis-summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload analysis artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jira-doc-analysis-${{ inputs.jira_key }}
+          path: |
+            jira-issue.json
+            terms.txt
+            unique-matches.txt
+            analysis-summary.md

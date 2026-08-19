@@ -17,14 +17,12 @@ permissions:
 
 jobs:
   analyze:
-    name: Analyze Jira Doc Impact
     uses: ./.github/workflows/analyze-jira-doc-impact.yml
     with:
       jira_key: ${{ inputs.jira_key }}
     secrets: inherit
 
   create_branch:
-    name: Create Docs Branch
     needs: analyze
     if: ${{ needs.analyze.result == 'success' }}
     uses: ./.github/workflows/create-docs-branch.yml

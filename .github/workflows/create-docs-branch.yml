@@ -1,0 +1,68 @@
+name: Create Docs Branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      jira_key:
+        description: Jira key, for example ABC-123
+        required: true
+        type: string
+      jira_title:
+        description: Jira title, for example Update authentication topic
+        required: true
+        type: string
+      create_pr_to_staging:
+        description: Also create a draft PR to staging
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create branch name
+        id: branch
+        shell: bash
+        run: |
+          KEY="${{ inputs.jira_key }}"
+          TITLE="${{ inputs.jira_title }}"
+
+          SLUG=$(echo "$TITLE" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed -E 's/[^a-z0-9]+/-/g' \
+            | sed -E 's/^-+|-+$//g' \
+            | cut -c1-50)
+
+          BRANCH="docs/${KEY}-${SLUG}"
+
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          echo "Branch will be: $BRANCH"
+
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Create branch from main
+        shell: bash
+        run: |
+          git switch -c "${{ steps.branch.outputs.branch }}"
+          git push origin "${{ steps.branch.outputs.branch }}"
+
+      - name: Create draft PR to staging
+        if: ${{ inputs.create_pr_to_staging }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh pr create \
+            --base staging \
+            --head "${{ steps.branch.outputs.branch }}" \
+            --draft \
+            --title "${{ inputs.jira_key }}: draft documentation update" \
+            --body "Auto-created draft PR for ${{ inputs.jira_key }}."

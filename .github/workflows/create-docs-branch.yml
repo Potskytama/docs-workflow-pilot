@@ -19,6 +19,10 @@ on:
       jira_title:
         required: true
         type: string
+    outputs:
+      branch_name:
+        description: Created branch name
+        value: ${{ jobs.create-branch.outputs.branch_name }}
 
 permissions:
   contents: write
@@ -26,6 +30,8 @@ permissions:
 jobs:
   create-branch:
     runs-on: ubuntu-latest
+    outputs:
+      branch_name: ${{ steps.branch.outputs.branch }}
     steps:
       - name: Create branch name
         id: branch
@@ -43,7 +49,6 @@ jobs:
           BRANCH="docs/${KEY}-${SLUG}"
 
           echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
-          echo "Branch will be: $BRANCH"
 
       - name: Checkout main
         uses: actions/checkout@v4

@@ -1,0 +1,269 @@
+name: Analyze Jira Doc Impact
+
+on:
+  workflow_dispatch:
+    inputs:
+      jira_key:
+        description: Jira key, for example ABC-123
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    env:
+      JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+      JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate required secrets
+        shell: bash
+        run: |
+          test -n "$JIRA_BASE_URL"
+          test -n "$JIRA_EMAIL"
+          test -n "$JIRA_API_TOKEN"
+          test -n "$OPENAI_API_KEY"
+
+      - name: Fetch Jira issue
+        shell: bash
+        run: |
+          curl -sS \
+            -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
+            -H "Accept: application/json" \
+            "$JIRA_BASE_URL/rest/api/3/issue/${{ inputs.jira_key }}" > jira-issue.json
+
+          jq -r '.fields.summary // ""' jira-issue.json > jira-summary.txt
+          jq -r '
+            .fields.description.content // []
+            | map(
+                .content // []
+                | map(.text // "")
+                | join(" ")
+              )
+            | join(" ")
+          ' jira-issue.json > jira-description.txt
+          jq -r '.fields.components // [] | map(.name) | join(" ")' jira-issue.json > jira-components.txt
+          jq -r '.fields.labels // [] | join(" ")' jira-issue.json > jira-labels.txt
+
+      - name: Build deterministic candidate set
+        shell: bash
+        run: |
+          cat jira-summary.txt jira-description.txt jira-components.txt jira-labels.txt > jira-search-source.txt
+
+          tr '[:upper:]' '[:lower:]' < jira-search-source.txt \
+            | sed -E 's/[^a-z0-9]+/\n/g' \
+            | sed '/^$/d' \
+            | awk 'length($0) >= 4' \
+            | sort -u \
+            | head -n 20 > terms.txt
+
+          : > matches.txt
+          find docs -type f \( -name "*.md" -o -name "toc.json" \) | sort > docs-files.txt
+
+          while IFS= read -r term; do
+            rg -i -l "$term" docs --glob "*.md" --glob "toc.json" >> matches.txt || true
+            grep -i "$term" docs-files.txt >> matches.txt || true
+          done < terms.txt
+
+          SUMMARY=$(cat jira-summary.txt)
+          if [ -n "$SUMMARY" ]; then
+            rg -i -l "$SUMMARY" docs --glob "*.md" --glob "toc.json" >> matches.txt || true
+          fi
+
+          sort -u matches.txt > unique-matches.txt
+
+      - name: Prepare AI input payload
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          def read_text(path):
+              p = Path(path)
+              return p.read_text(encoding="utf-8") if p.exists() else ""
+
+          def read_lines(path):
+              p = Path(path)
+              return [line.strip() for line in p.read_text(encoding="utf-8").splitlines() if line.strip()] if p.exists() else []
+
+          matched_files = read_lines("unique-matches.txt")
+          docs = {}
+          for file_path in matched_files:
+              p = Path(file_path)
+              if p.exists() and p.suffix == ".md":
+                  docs[file_path] = p.read_text(encoding="utf-8")[:12000]
+
+          toc_text = read_text("docs/toc.json")[:12000]
+
+          payload = {
+              "jira_key": "${{ inputs.jira_key }}",
+              "summary": read_text("jira-summary.txt").strip(),
+              "description": read_text("jira-description.txt").strip(),
+              "components": read_text("jira-components.txt").strip(),
+              "labels": read_text("jira-labels.txt").strip(),
+              "search_terms": read_lines("terms.txt"),
+              "candidate_files": matched_files,
+              "toc_path": "docs/toc.json",
+              "toc_contents": toc_text,
+              "candidate_file_contents": docs,
+          }
+
+          Path("ai-input.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
+          PY
+
+      - name: Run AI analysis
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import urllib.request
+          from pathlib import Path
+
+          payload = json.loads(Path("ai-input.json").read_text(encoding="utf-8"))
+
+          prompt = f"""
+          You are analyzing documentation impact for a Jira issue.
+
+          Determine:
+          - the most likely primary files affected
+          - related context files
+          - whether docs/toc.json likely needs updating
+          - whether this is mainly a create, update, restructure, or delete task
+          - whether a net-new topic is likely needed
+          - recommended documentation changes
+          - open questions and assumptions
+
+          Prefer precision over breadth. Do not mark every related file as primary.
+
+          Return valid JSON with this shape:
+          {{
+            "jira_key": "",
+            "summary": "",
+            "action_type": "create",
+            "net_new_topic": true,
+            "toc_update_likely": true,
+            "primary_files": [],
+            "related_context_files": [],
+            "recommended_changes": [],
+            "open_questions": [],
+            "assumptions": [],
+            "confidence": "medium"
+          }}
+
+          Allowed action_type values: create, update, restructure, delete.
+          Allowed confidence values: low, medium, high.
+
+          Input data:
+          {json.dumps(payload, indent=2)}
+          """
+
+          body = {
+              "model": "gpt-5.6",
+              "input": prompt
+          }
+
+          req = urllib.request.Request(
+              "https://api.openai.com/v1/responses",
+              data=json.dumps(body).encode("utf-8"),
+              headers={
+                  "Content-Type": "application/json",
+                  "Authorization": f"Bearer {__import__('os').environ['OPENAI_API_KEY']}",
+              },
+              method="POST",
+          )
+
+          with urllib.request.urlopen(req) as resp:
+              response = json.loads(resp.read().decode("utf-8"))
+
+          text = response.get("output_text", "").strip()
+          Path("ai-analysis.json").write_text(text, encoding="utf-8")
+          PY
+
+      - name: Render AI analysis markdown
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("ai-analysis.json").read_text(encoding="utf-8"))
+
+          lines = [
+              "# Jira AI Analysis",
+              "",
+              f"- Jira key: `{data.get('jira_key', '')}`",
+              f"- Summary: {data.get('summary', '')}",
+              f"- Action type: {data.get('action_type', '')}",
+              f"- Net-new topic likely: {data.get('net_new_topic', False)}",
+              f"- TOC update likely: {data.get('toc_update_likely', False)}",
+              f"- Confidence: {data.get('confidence', '')}",
+              "",
+              "## Primary Files",
+          ]
+
+          primary = data.get("primary_files", [])
+          if primary:
+              lines.extend([f"- {item}" for item in primary])
+          else:
+              lines.append("- None identified confidently")
+
+          lines.extend(["", "## Related Context"])
+          related = data.get("related_context_files", [])
+          if related:
+              lines.extend([f"- {item}" for item in related])
+          else:
+              lines.append("- None")
+
+          lines.extend(["", "## Recommended Doc Changes"])
+          changes = data.get("recommended_changes", [])
+          if changes:
+              lines.extend([f"- {item}" for item in changes])
+          else:
+              lines.append("- None")
+
+          lines.extend(["", "## Open Questions"])
+          questions = data.get("open_questions", [])
+          if questions:
+              lines.extend([f"- {item}" for item in questions])
+          else:
+              lines.append("- None")
+
+          lines.extend(["", "## Assumptions"])
+          assumptions = data.get("assumptions", [])
+          if assumptions:
+              lines.extend([f"- {item}" for item in assumptions])
+          else:
+              lines.append("- None")
+
+          Path("ai-analysis.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+          PY
+
+      - name: Add summary to workflow run
+        shell: bash
+        run: |
+          cat ai-analysis.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload analysis artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: jira-doc-analysis-${{ inputs.jira_key }}
+          path: |
+            jira-issue.json
+            jira-summary.txt
+            jira-description.txt
+            jira-components.txt
+            jira-labels.txt
+            terms.txt
+            docs-files.txt
+            unique-matches.txt
+            ai-input.json
+            ai-analysis.json
+            ai-analysis.md

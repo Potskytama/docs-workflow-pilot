@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       jira_key:
-        description: Jira key, for example ABC-123
+        description: Jira key
         required: true
         type: string
       jira_title:
-        description: Jira title, for example Update authentication topic
+        description: Jira title
         required: true
         type: string
 
@@ -30,3 +30,55 @@ jobs:
       jira_key: ${{ inputs.jira_key }}
       jira_title: ${{ inputs.jira_title }}
     secrets: inherit
+
+  comment_jira:
+    needs: create_branch
+    if: ${{ needs.create_branch.result == 'success' }}
+    runs-on: ubuntu-latest
+    env:
+      JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+      JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      JIRA_KEY: ${{ inputs.jira_key }}
+      BRANCH_NAME: ${{ needs.create_branch.outputs.branch_name }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Add Jira comment
+        shell: bash
+        run: |
+          BRANCH_URL="https://github.com/$REPO/tree/$BRANCH_NAME"
+
+          cat > comment.json <<EOF
+          {
+            "body": {
+              "type": "doc",
+              "version": 1,
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    { "type": "text", "text": "Documentation branch created: " },
+                    {
+                      "type": "text",
+                      "text": "$BRANCH_NAME",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": { "href": "$BRANCH_URL" }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+          EOF
+
+          curl -sS \
+            -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
+            -H "Accept: application/json" \
+            -H "Content-Type: application/json" \
+            -X POST \
+            --data @comment.json \
+            "$JIRA_BASE_URL/rest/api/3/issue/$JIRA_KEY/comment"

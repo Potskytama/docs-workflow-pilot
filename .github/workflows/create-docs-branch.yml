@@ -11,15 +11,9 @@ on:
         description: Jira title, for example Update authentication topic
         required: true
         type: string
-      create_pr_to_staging:
-        description: Also create a draft PR to staging
-        required: true
-        default: false
-        type: boolean
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   create-branch:
@@ -53,16 +47,3 @@ jobs:
         run: |
           git switch -c "${{ steps.branch.outputs.branch }}"
           git push origin "${{ steps.branch.outputs.branch }}"
-
-      - name: Create draft PR to staging
-        if: ${{ inputs.create_pr_to_staging }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          gh pr create \
-            --base staging \
-            --head "${{ steps.branch.outputs.branch }}" \
-            --draft \
-            --title "${{ inputs.jira_key }}: draft documentation update" \
-            --body "Auto-created draft PR for ${{ inputs.jira_key }}."

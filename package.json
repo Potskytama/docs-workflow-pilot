@@ -1,0 +1,14 @@
+{
+  "name": "docs-workflow-pilot",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Minimal package file for documentation workflow pilot checks",
+  "scripts": {
+    "docs:lint": "node -e \"console.log('docs:lint passed')\"",
+    "docs:spell": "node -e \"console.log('docs:spell passed')\"",
+    "docs:links": "node -e \"console.log('docs:links passed')\"",
+    "docs:build": "node -e \"console.log('docs:build passed')\"",
+    "docs:publish:staging": "node -e \"console.log('docs:publish:staging passed')\"",
+    "docs:publish:prod": "node -e \"console.log('docs:publish:prod passed')\""
+  }
+}

@@ -97,11 +97,28 @@ jobs:
         run: |
           : > matches.txt
 
+          echo "Scanning ref: $GITHUB_REF"
+          echo "Docs files present:"
+          find docs -type f \( -name "*.md" -o -name "toc.json" \) | sort | tee docs-files.txt
+
           while IFS= read -r term; do
-            rg -i -l --glob "docs/**" --glob "*.md" "$term" . >> matches.txt || true
+            rg -i -l "$term" docs --glob "*.md" --glob "toc.json" >> matches.txt || true
+            find docs -type f \( -name "*.md" -o -name "toc.json" \) | grep -i "$term" >> matches.txt || true
           done < terms.txt
 
+          SUMMARY="${{ steps.jira.outputs.summary }}"
+          if [ -n "$SUMMARY" ]; then
+            rg -i -l "$SUMMARY" docs --glob "*.md" --glob "toc.json" >> matches.txt || true
+          fi
+
+          if [ -f "docs/toc.json" ]; then
+            echo "TOC file detected: docs/toc.json"
+          fi
+
           sort -u matches.txt > unique-matches.txt
+
+          echo "Matched files:"
+          cat unique-matches.txt || true
 
           {
             echo "files<<EOF"
@@ -112,11 +129,17 @@ jobs:
       - name: Write analysis summary
         shell: bash
         run: |
+          TOC_IMPACT="No"
+          if grep -qx "docs/toc.json" unique-matches.txt 2>/dev/null; then
+            TOC_IMPACT="Yes"
+          fi
+
           {
             echo "# Jira Analysis"
             echo
             echo "- Jira key: \`${{ inputs.jira_key }}\`"
             echo "- Summary: ${{ steps.jira.outputs.summary }}"
+            echo "- TOC impact likely: $TOC_IMPACT"
             echo
             echo "## Search Terms"
             echo
@@ -128,6 +151,14 @@ jobs:
               sed 's/^/- /' unique-matches.txt
             else
               echo "- No matching docs found automatically"
+            fi
+            echo
+            echo "## Navigation Impact"
+            echo
+            if [ "$TOC_IMPACT" = "Yes" ]; then
+              echo "- Review \`docs/toc.json\` for new entries, renamed topics, moved topics, or section changes"
+            else
+              echo "- No direct TOC match found automatically, but confirm whether navigation still needs an update"
             fi
             echo
             echo "## Recommended Next Review"

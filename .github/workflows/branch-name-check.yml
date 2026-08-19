@@ -1,0 +1,25 @@
+name: Branch Name Check
+
+on:
+  pull_request:
+    branches:
+      - staging
+      - main
+
+jobs:
+  validate-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate branch name
+        shell: bash
+        run: |
+          BRANCH="${{ github.head_ref }}"
+          PATTERN='^docs/[A-Z]+-[0-9]+-[a-z0-9-]+$'
+
+          if [[ ! "$BRANCH" =~ $PATTERN ]]; then
+            echo "Invalid branch name: $BRANCH"
+            echo "Expected pattern: docs/JIRA-123-short-slug"
+            exit 1
+          fi
+
+          echo "Branch name is valid: $BRANCH"
